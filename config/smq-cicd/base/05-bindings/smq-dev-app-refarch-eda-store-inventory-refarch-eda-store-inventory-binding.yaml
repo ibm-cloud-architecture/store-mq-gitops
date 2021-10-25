@@ -1,0 +1,13 @@
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: TriggerBinding
+metadata:
+  creationTimestamp: null
+  name: smq-dev-app-refarch-eda-store-inventory-refarch-eda-store-inventory-binding
+  namespace: smq-cicd
+spec:
+  params:
+  - name: imageRepo
+    value: quay.io/ibmcase/eda-store-simulator
+  - name: tlsVerify
+    value: "true"
+status: {}

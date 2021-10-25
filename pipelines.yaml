@@ -1,0 +1,29 @@
+config:
+  argocd:
+    namespace: openshift-gitops
+  pipelines:
+    name: smq-cicd
+environments:
+- apps:
+  - name: app-refarch-eda-store-inventory
+    services:
+    - name: refarch-eda-store-inventory
+      pipelines:
+        integration:
+          bindings:
+          - smq-dev-app-refarch-eda-store-inventory-refarch-eda-store-inventory-binding
+          - github-push-binding
+      source_url: https://github.com/jbcodeforce/refarch-eda-store-inventory.git
+      webhook:
+        secret:
+          name: webhook-secret-smq-dev-refarch-eda-store-inventory
+          namespace: smq-cicd
+  name: smq-dev
+  pipelines:
+    integration:
+      bindings:
+      - github-push-binding
+      template: app-ci-template
+- name: smq-stage
+gitops_url: https://github.com/ibm-cloud-architecture/store-mq-gitops.git
+version: 1

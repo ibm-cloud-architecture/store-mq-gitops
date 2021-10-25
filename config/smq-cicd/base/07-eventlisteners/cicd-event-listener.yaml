@@ -1,0 +1,48 @@
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: EventListener
+metadata:
+  creationTimestamp: null
+  name: cicd-event-listener
+  namespace: smq-cicd
+spec:
+  namespaceSelector: {}
+  podTemplate: {}
+  resources: {}
+  serviceAccountName: pipeline
+  triggers:
+  - bindings:
+    - ref: github-push-binding
+    interceptors:
+    - github:
+        secretRef:
+          secretKey: webhook-secret-key
+          secretName: gitops-webhook-secret
+    - cel:
+        filter: (header.match('X-GitHub-Event', 'push') && body.repository.full_name
+          == 'ibm-cloud-architecture/store-mq-gitops')
+        overlays:
+        - expression: body.ref.split('/')[2]
+          key: ref
+    name: ci-dryrun-from-push
+    template:
+      ref: ci-dryrun-from-push-template
+  - bindings:
+    - ref: smq-dev-app-refarch-eda-store-inventory-refarch-eda-store-inventory-binding
+    - ref: github-push-binding
+    interceptors:
+    - github:
+        secretRef:
+          secretKey: webhook-secret-key
+          secretName: webhook-secret-smq-dev-refarch-eda-store-inventory
+    - cel:
+        filter: (header.match('X-GitHub-Event', 'push') && body.repository.full_name
+          == 'jbcodeforce/refarch-eda-store-inventory')
+        overlays:
+        - expression: body.ref.split('/')[2]
+          key: ref
+    name: app-ci-build-from-push-refarch-eda-store-inventory
+    template:
+      ref: app-ci-template
+status:
+  configuration:
+    generatedName: ""
