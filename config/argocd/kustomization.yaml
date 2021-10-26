@@ -1,6 +1,6 @@
 resources:
 - argo-app.yaml
-- cicd-app.yaml
-- smq-dev-app-refarch-eda-store-inventory-app.yaml
 - smq-dev-env-app.yaml
-- smq-stage-env-app.yaml
+- es-app.yaml
+- smq-dev-app-refarch-eda-store-inventory-app.yaml
+

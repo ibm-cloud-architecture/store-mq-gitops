@@ -10,7 +10,7 @@ spec:
   destination:
     namespace: smq-dev
     server: https://kubernetes.default.svc
-  project: default
+  project: smq
   source:
     path: environments/smq-dev/apps/app-refarch-eda-store-inventory/overlays
     repoURL: https://github.com/ibm-cloud-architecture/store-mq-gitops.git
