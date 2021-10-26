@@ -24,6 +24,9 @@ There are two ways to use this demonstration:
 
 ## Option 1: From Cloud Pak for Integration
 
+You have an OpenShift Cluster with the needed resource and you already installed Cloud Pak
+for integration common services and operators.
+
 * login to OpenShift cluster
 * 
 
@@ -38,7 +41,8 @@ In this option we start from a OpenShift Cluster on IBM Cloud (ROKS cluster) wit
   oc project openshift-operators
   ```
 
-* Get your entitlement key from IBM site and use the following scripts: 
+* Get your entitlement key from IBM site and use the following scripts to define a secret so
+images for MQ and Event Streams can be downloaded the IBM image registry: 
 
   ```sh
   ./boostrap/scripts/defineEntitlementSecret.sh your_long_entitlement_key 

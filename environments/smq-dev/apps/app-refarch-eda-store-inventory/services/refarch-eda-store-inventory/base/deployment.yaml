@@ -8,14 +8,14 @@ metadata:
     prometheus.io/path: /q/metrics
     app.openshift.io/vcs-url: https://github.com/ibm-cloud-architecture/refarch-eda-store-simulator.git
   labels:
-    app.kubernetes.io/version: 0.0.1
+    app.kubernetes.io/version: 0.0.6
     app.kubernetes.io/name: store-simulator
   name: store-simulator
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/version: 0.0.1
+      app.kubernetes.io/version: 0.0.6
       app.kubernetes.io/name: store-simulator
   template:
     metadata:
@@ -61,7 +61,7 @@ spec:
           valueFrom:
             secretKeyRef:
               key: ca.password
-              name: kafka-cluster-ca-cert
+              name: dev-cluster-ca-cert
         - name: USER_CERT_PWD
           valueFrom:
             secretKeyRef:
@@ -112,12 +112,12 @@ spec:
           name: user-cert
           readOnly: false
           subPath: ""
-      serviceAccount: inventory-solution-sa
+      serviceAccount: smq-sa
       volumes:
       - name: kafka-cert
         secret:
           optional: true
-          secretName: kafka-cluster-ca-cert
+          secretName: dev-cluster-ca-cert
       - name: user-cert
         secret:
           optional: true
