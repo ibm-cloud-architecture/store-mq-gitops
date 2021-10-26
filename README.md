@@ -35,7 +35,7 @@ for integration common services and operators.
 
 In this option we start from a OpenShift Cluster on IBM Cloud (ROKS cluster) with minimum of three nodes.
 
-* use `openshift-operators` project
+* Use `openshift-operators` project
 
   ```sh
   oc project openshift-operators
@@ -59,6 +59,12 @@ images for MQ and Event Streams can be downloaded the IBM image registry:
   ```sh
   oc apply -k bootstrap/openshift-gitops/operator/overlays/stable
   ```
+
+* Deploy the ibm-common-services: for that we need to copy the entitlement-key secret to `ibm-common-services` using the command:
+
+   ```sh
+   ./bootstrap/scripts/copySecrets.sh ibm-common-services
+   ```
 
 * Deploy IBM Event Streams Operator to watch all namespaces. As a first installation
 it will take some time as it also install 'Cloud Pak foundational services'
