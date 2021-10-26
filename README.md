@@ -60,3 +60,31 @@ In this option we start from a OpenShift Cluster on IBM Cloud (ROKS cluster) wit
   ```sh
     oc apply -k bootstrap/mq
   ```
+
+* Create ArgoCD project
+
+  ```sh
+  oc apply -k bootstrap/argocd-project
+  ```
+
+* Get ArgoCD admin password
+
+  ```sh
+   oc extract secret/openshift-gitops-cluster -n openshift-gitops --to=- 
+  ```
+
+* Get ArgoCD URL
+
+  ```sh
+  oc get routes -n openshift-gitops
+  ```
+
+  Login to the url like: openshift-gitops-server-openshift-gitops.........appdomain.cloud 
+
+  In the Argo application, filter on the project named `smq`
+  
+* Lets Go!: Start GitOps
+
+  ```sh
+   oc apply -k config/argocd 
+  ```
