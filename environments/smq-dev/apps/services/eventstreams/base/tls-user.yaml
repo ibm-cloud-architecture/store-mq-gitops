@@ -2,6 +2,7 @@ apiVersion: eventstreams.ibm.com/v1beta1
 kind: KafkaUser
 metadata:
   name: tls-user
+  namespace: cp4i
   labels:
     eventstreams.ibm.com/cluster: dev
 spec:

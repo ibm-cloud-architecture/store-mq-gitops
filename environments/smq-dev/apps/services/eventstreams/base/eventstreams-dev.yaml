@@ -2,6 +2,7 @@
 kind: EventStreams
 metadata:
   name: dev
+  namespace: cp4i
 spec:
   version: 10.4.0
   license:
