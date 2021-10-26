@@ -1,4 +1,6 @@
 resources:
+- role.yaml
+- service-account.yaml
 - argocd-admin.yaml
 - smq-dev-environment.yaml
 - smq-dev-rolebinding.yaml

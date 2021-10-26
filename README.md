@@ -119,6 +119,8 @@ it will take some time as it also install 'Cloud Pak foundational services'
 
   Now in the ArgoCD console you should see ArgoCD applications defined and after sometime all becoming green
 
+> This will take some time to make it running: when not already, event streams cluster creation will enforce common services to be created.
+ 
 * Go to the `smq-dev` project, in the OpenShift console, or with `oc project smq-dev`. 
 
 * Try the following commands to assess state of the different  deployments
