@@ -2,5 +2,6 @@ resources:
 - argo-app.yaml
 - smq-dev-env-app.yaml
 - es-app.yaml
+- mq-app.yaml
 - smq-dev-app-refarch-eda-store-inventory-app.yaml
 

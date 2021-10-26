@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  creationTimestamp: null
+  name: mq-app
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: smq-dev
+    server: https://kubernetes.default.svc
+  project: smq
+  source:
+    path: environments/smq-dev/apps/services/mq/overlays
+    repoURL: https://github.com/ibm-cloud-architecture/store-mq-gitops.git
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+status:
+  health: {}
+  summary: {}
+  sync:
+    comparedTo:
+      destination: {}
+      source:
+        repoURL: ""
+    status: ""

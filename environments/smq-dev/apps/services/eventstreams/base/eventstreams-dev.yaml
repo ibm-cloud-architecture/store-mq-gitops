@@ -2,7 +2,7 @@
 kind: EventStreams
 metadata:
   name: dev
-  namespace: cp4i
+  namespace: smq-dev
 spec:
   version: 10.4.0
   license:

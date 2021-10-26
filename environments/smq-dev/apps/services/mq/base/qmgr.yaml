@@ -2,7 +2,7 @@ apiVersion: mq.ibm.com/v1beta1
 kind: QueueManager
 metadata:
   name: store-simulator-mq
-  namespace: cp4i
+  namespace: smq-dev
 spec:
   license:
     accept: true

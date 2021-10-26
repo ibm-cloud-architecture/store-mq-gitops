@@ -81,10 +81,12 @@ In this option we start from a OpenShift Cluster on IBM Cloud (ROKS cluster) wit
 
   Login to the url like: openshift-gitops-server-openshift-gitops.........appdomain.cloud 
 
-  In the Argo application, filter on the project named `smq`
-  
+  In the Argo application, filter on the project named `smq`, you should see no application.
+
 * Lets Go!: Start GitOps
 
   ```sh
    oc apply -k config/argocd 
   ```
+
+  Now in the ArgoCD console you should see ArgoCD applications

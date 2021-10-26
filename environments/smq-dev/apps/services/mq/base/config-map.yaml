@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: store-simulator-mq-msqc
-  namespace: cp4i
+  namespace: smq-dev
 data:
   tls.mqsc: |
     DEFINE QLOCAL('DEV.QUEUE.1') REPLACE
