@@ -5,7 +5,6 @@ metadata:
     app.openshift.io/vcs-url: https://github.com/ibm-cloud-architecture/refarch-eda-store-simulator.git
   labels:
     app.kubernetes.io/name: store-simulator
-    app.openshift.io/runtime: quarkus
   name: store-simulator
 spec:
   host: ""
