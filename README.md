@@ -32,10 +32,10 @@ There are two ways to use this demonstration:
 
 In this option we start from a OpenShift Cluster on IBM Cloud (ROKS cluster) with minimum of three nodes.
 
-* create `cp4i` project
+* use `openshift-operators` project
 
   ```sh
-  ./boostrap/scripts/defineProject.sh
+  oc project openshift-operators
   ```
 
 * Get your entitlement key from IBM site and use the following scripts: 
@@ -47,6 +47,7 @@ In this option we start from a OpenShift Cluster on IBM Cloud (ROKS cluster) wit
 * Deploy OpenShift GitOps operator
 
   ```sh
+  oc apply -k openshift-gitops/operator/overlays/stable
   ```
 
 * Deploy IBM Event Streams Operator
