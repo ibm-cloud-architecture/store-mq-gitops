@@ -33,13 +33,30 @@ for integration common services and operators.
 
 ## Option 2: From a OpenShift Cluster
 
-In this option we start from a OpenShift Cluster on IBM Cloud (ROKS cluster) with minimum of three nodes.
+In this option we start from a newly created OpenShift Cluster on IBM Cloud (ROKS cluster) with a minimum of three nodes of 8 CPU at 32GB.
 
-* Use `openshift-operators` project
+* Add IBM product catalog, so IBM products are visible into the OperatorHub. 
+It may take few seconds to get product visible.
 
   ```sh
-  oc project openshift-operators
+  ./bootstrap/scripts/addIBMCatalog.sh
   ```
+
+* Deploy OpenShift GitOps operator, so we can use ArgoCD to deploy the demo in one command
+
+  ```sh
+  oc apply -k bootstrap/openshift-gitops/operator/overlays/stable
+  ```
+
+  The operator is managing all namespaces, and will also takes some second to be up and running.
+
+* Deploy IBM Event Streams Operator in `openshift-operators` project to watch all namespaces. As a first installation
+it will take some time as it also installs 'Cloud Pak foundational services'
+
+  ```sh
+    oc apply -k bootstrap/eventstreams
+  ```
+  This should add one eventstreams operator pod in the `openshift-operators`, and 3 pods for common services in `ibm-common-services`.
 
 * Get your entitlement key from IBM site and use the following scripts to define a secret so
 images for MQ and Event Streams can be downloaded the IBM image registry: 
@@ -48,23 +65,8 @@ images for MQ and Event Streams can be downloaded the IBM image registry:
   ./boostrap/scripts/defineEntitlementSecret.sh your_long_entitlement_key 
   ```
 
-* Add IBM product catalog
+  This should add one pod to share secret in the `ibm-common-services` project.
 
-  ```sh
-  ./bootstrap/scripts/addIBMCatalog.sh
-  ```
-
-* Deploy OpenShift GitOps operator
-
-  ```sh
-  oc apply -k bootstrap/openshift-gitops/operator/overlays/stable
-  ```
-
-* Deploy the ibm-common-services: for that we need to copy the entitlement-key secret to `ibm-common-services` using the command:
-
-   ```sh
-   ./bootstrap/scripts/copySecrets.sh ibm-common-services
-   ```
 
 * Deploy IBM Event Streams Operator to watch all namespaces. As a first installation
 it will take some time as it also install 'Cloud Pak foundational services'
@@ -79,13 +81,13 @@ it will take some time as it also install 'Cloud Pak foundational services'
   oc get pods -n openshift-operators
   ```
 
-* Deploy IBM MQ Operator
+* Deploy IBM MQ Operator, in the `openshift-operators` project, and it adds a new pod for the MQ operator.
 
   ```sh
     oc apply -k bootstrap/mq
   ```
 
-* Create ArgoCD project
+* Create ArgoCD project to isolate the solution from other. The name of the project is `smq`
 
   ```sh
   oc apply -k bootstrap/argocd-project
@@ -100,7 +102,7 @@ it will take some time as it also install 'Cloud Pak foundational services'
 * Get ArgoCD URL, verify configuration
 
   ```sh
-  oc get routes -n openshift-gitops
+  oc get routes openshift-gitops-server -n openshift-gitops
   ```
 
   Login to the url like: openshift-gitops-server-openshift-gitops.........appdomain.cloud 

@@ -74,8 +74,6 @@ spec:
         envFrom:
         - configMapRef:
             name: store-simulator-cm
-        - configMapRef:
-            name: kafka-env-cm
         image: quay.io/ibmcase/eda-store-simulator
         imagePullPolicy: Always
         livenessProbe:

@@ -4,11 +4,11 @@ metadata:
   name: store-simulator-cm
 data:
   APP_VERSION: 0.0.6
-  APP_TARGET_MESSAGING: MQ
+  APP_TARGET_MESSAGING: IBMMQ
   KAFKA_BOOTSTRAP_SERVERS: dev-kafka-bootstrap.smq-dev.svc.cluster.local:9094
   KAFKA_TOPIC_NAME: items
-  MQ_HOST: mq1-cp4i-ibm-mq.cp4i-mq1.svc
+  MQ_HOST: mq1-cp4i-ibm-mq.smq-dev.svc
   MQ_PORT: "1414"
   MQ_QMGR: BIGGSQMGR 
-  MQ_QUEUE_NAME: lab.items
+  MQ_QUEUE_NAME: DEV
   MQ_CHANNEL: STORE.CHANNEL

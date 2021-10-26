@@ -2,4 +2,5 @@
 resources:
   - ./eventstreams-dev.yaml
   - ./scram-user.yaml
-  - ./tls-user.yaml   
+  - ./tls-user.yaml
+  - ./es-topics.yaml

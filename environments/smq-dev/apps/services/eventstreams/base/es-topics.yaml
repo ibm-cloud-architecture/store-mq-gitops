@@ -1,0 +1,10 @@
+apiVersion: eventstreams.ibm.com/v1beta1
+kind: KafkaTopic
+metadata:
+  name: items
+  labels:
+    eventstreams.ibm.com/cluster: dev
+spec:
+  partitions: 1
+  replicas: 1
+
