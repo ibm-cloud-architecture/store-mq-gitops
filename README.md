@@ -28,12 +28,17 @@ You have an OpenShift Cluster with the needed resource and you already installed
 for integration common services and operators.
 
 * login to OpenShift cluster
-* 
+* Verify Operators scope: all namespaces or within one namespace, like `cp4i`
+* Verify OpenShift GitOps 
+
+To Be Continued 
 
 
 ## Option 2: From a new OpenShift Cluster
 
-In this option we start from a newly created OpenShift Cluster on IBM Cloud (ROKS cluster) with a minimum of three nodes of 8 CPU at 32GB.
+In this option we start from a newly created OpenShift Cluster on IBM Cloud (ROKS cluster) with a minimum of three nodes of 8 CPU at 32GB,
+then will use some manual step to bootstrap the gitops and then start the ArgoCD deployment, which
+will deploy all the components automatically.
 
 * Add IBM product catalog, so IBM products are visible into the OperatorHub. 
 It may take few seconds to get product visible.
@@ -146,6 +151,10 @@ it will take some time as it also install 'Cloud Pak foundational services'
       ```
   * Go to the console and verify the QM1 broker with the DEV.QUEUE.1  queue are up and running.
 
+
+### ArgoCD outcome
+
+![]()
 
 ## Demonstration script
 
