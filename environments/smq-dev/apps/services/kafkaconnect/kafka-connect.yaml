@@ -38,7 +38,7 @@ spec:
         certificate: ca.crt
   authentication:
     type: tls
-    username: tls-user
+    username: es-tls-user
     passwordSecret:
-      secretName: tls-user
+      secretName: es-tls-user
       password: user.password
