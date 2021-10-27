@@ -1,0 +1,1 @@
+oc  logs $(oc get pods -n openshift-operators | grep eventstreams | awk '{print $1}') -n openshift-operators
