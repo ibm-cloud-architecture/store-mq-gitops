@@ -16,6 +16,8 @@ spec:
   apicurioRegistry: {}
   collector: {}
   restProducer: {}
+  topicOperator: {}
+  userOperator: {}
   strimziOverrides:
     kafka:
       replicas: 3

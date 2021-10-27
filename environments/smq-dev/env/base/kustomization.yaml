@@ -4,4 +4,5 @@ resources:
 - argocd-admin.yaml
 - smq-dev-environment.yaml
 - smq-dev-rolebinding.yaml
-- cpsecretjob.yaml
+# Need to find a  better way
+# - cpsecretjob.yaml
