@@ -36,9 +36,9 @@ spec:
     trustedCertificates:
       - secretName: dev-cluster-ca-cert
         certificate: ca.crt
-#  authentication:
-#    type: scram-sha-512
-#    username: my-connect-user
-#    passwordSecret:
-#      secretName: my-connect-user
-#      password: my-connect-password-key
+  authentication:
+    type: type
+    username: tls-user
+    passwordSecret:
+      secretName: tls-user
+      password: user.password
