@@ -37,7 +37,7 @@ spec:
       - secretName: dev-cluster-ca-cert
         certificate: ca.crt
   authentication:
-    type: type
+    type: tls
     username: tls-user
     passwordSecret:
       secretName: tls-user
