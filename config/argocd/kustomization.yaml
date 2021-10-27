@@ -4,4 +4,5 @@ resources:
 - es-app.yaml
 - mq-app.yaml
 - smq-dev-app-refarch-eda-store-inventory-app.yaml
+- kconnect-app.yaml 
 
