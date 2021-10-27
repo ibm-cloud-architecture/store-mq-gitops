@@ -14,7 +14,7 @@ that is using the following components:
 
 There are two ways to use this demonstration:
 
-* You have already a Cloud Pak for Integration deployed on OpenShift 4.7 cluster
+* You already have a Cloud Pak for Integration deployed on OpenShift 4.7 cluster
 * You have only an OpenShift 4.7+ cluster
 
 
@@ -22,7 +22,7 @@ There are two ways to use this demonstration:
 
 * Understand Event Streams, Kafka Connectors, MQ connectors
 
-## Option 1: From Cloud Pak for Integration
+## Option 1: Using existing Cloud Pak for Integration
 
 You have an OpenShift Cluster with the needed resource and you already installed Cloud Pak
 for integration common services and operators.
@@ -31,7 +31,7 @@ for integration common services and operators.
 * 
 
 
-## Option 2: From a OpenShift Cluster
+## Option 2: From a new OpenShift Cluster
 
 In this option we start from a newly created OpenShift Cluster on IBM Cloud (ROKS cluster) with a minimum of three nodes of 8 CPU at 32GB.
 
@@ -120,7 +120,7 @@ it will take some time as it also install 'Cloud Pak foundational services'
   Now in the ArgoCD console you should see ArgoCD applications defined and after sometime all becoming green
 
 > This will take some time to make it running: when not already, event streams cluster creation will enforce common services to be created.
- 
+
 * Go to the `smq-dev` project, in the OpenShift console, or with `oc project smq-dev`. 
 
 * Try the following commands to assess state of the different  deployments
@@ -131,4 +131,17 @@ it will take some time as it also install 'Cloud Pak foundational services'
    # For MQ
    oc get QueueManager
    ```
-  
+
+* Access the MQ console: 
+
+   * First get the console URL with: 
+
+      ```sh
+      oc get routes store-mq-ibm-mq-web  -n smq-dev
+      ```
+  * Get admin password
+
+      ```sh
+      oc get secret platform-auth-idp-credentials -o jsonpath='{.data.admin_password}' -n ibm-common-services | base64 --decode && echo ""
+      ```
+  * Go to the console and verify the QM1 broker with the DEV.QUEUE.1  queue are up and running.
