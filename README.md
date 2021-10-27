@@ -145,3 +145,32 @@ it will take some time as it also install 'Cloud Pak foundational services'
       oc get secret platform-auth-idp-credentials -o jsonpath='{.data.admin_password}' -n ibm-common-services | base64 --decode && echo ""
       ```
   * Go to the console and verify the QM1 broker with the DEV.QUEUE.1  queue are up and running.
+
+
+## Demonstration script
+
+The script is moved to [this website page](https://ibm-cloud-architecture.github.io/refarch-eda/use-cases/connect-mq/)
+
+## Maintenance
+
+You can contribute via Pull Request once you have forked this repository.
+
+This project was built using [KAM CLI](https://github.com/redhat-developer/kam), and pruned to remove pipeline and stage environment.
+
+This project has some dependencies to run:
+
+* The mq Sink connector jar which can be downloaded from the release page of [this IBM messaging  kafka-connect-mq-source git repo](https://github.com/ibm-messaging/kafka-connect-mq-source) and 
+saved into the `environments/smq-dev/apps/services/kafkaconnect/my-plugins` folder.
+* The MQ java client jars:
+
+   ```sh
+   curl -s https://repo1.maven.org/maven2/com/ibm/mq/com.ibm.mq.allclient/9.2.2.0/com.ibm.mq.allclient-9.2.2.0.jar -o com.ibm.mq.allclient-9.2.2.0.jar
+   ```
+* The Store simulator from [this repo](https://github.com/ibm-cloud-architecture/refarch-eda-store-simulator)
+
+The following images are already built and ready to run:
+
+* quay.io/ibmcase/demomqconnect [![Docker Repository on Quay](https://recovery.quay.io/repository/ibmcase/demomqconnect/status "Docker Repository on Quay")](https://recovery.quay.io/repository/ibmcase/demomqconnect)
+* quay.io/ibmcase/eda-store-simulator
+
+One of the potential maintenance is update to the MQ source jars.
