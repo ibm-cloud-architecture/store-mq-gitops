@@ -17,8 +17,6 @@ spec:
   collector: {}
   restProducer: {}
   strimziOverrides:
-    topicOperator: {}
-    userOperator: {}
     kafka:
       replicas: 3
       authorization:
