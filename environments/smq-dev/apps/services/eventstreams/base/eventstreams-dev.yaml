@@ -18,8 +18,8 @@ spec:
   restProducer: {}
   strimziOverrides:
     entityOperator: 
-      - topicOperator: {}
-      - userOperator: {}
+      topicOperator: {}
+      userOperator: {}
     kafka:
       replicas: 3
       authorization:
