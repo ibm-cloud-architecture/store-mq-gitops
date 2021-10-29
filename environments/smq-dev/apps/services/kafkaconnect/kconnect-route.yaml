@@ -1,0 +1,13 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: kconnect-route
+  namespace: smq-dev
+spec:
+  host: ""
+  to:
+    kind: Service
+    name: my-connect-cluster-connect-api
+  port:
+    targetPort: rest-api
+  wildcardPolicy: None

@@ -6,7 +6,7 @@ metadata:
     eventstreams.ibm.com/use-connector-resources: "true"
 spec:
   version: 2.8.0
-  replicas: 1
+  replicas: 2
   bootstrapServers: dev-kafka-bootstrap.smq-dev.svc:9093
   image: quay.io/ibmcase/demomqconnect:latest
   template:

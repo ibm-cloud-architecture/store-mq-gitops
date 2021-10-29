@@ -154,7 +154,7 @@ it will take some time as it also install 'Cloud Pak foundational services'
 
 ### ArgoCD outcome
 
-![]()
+![](./docs/argocd-smq-apps.png)
 
 ## Demonstration script
 
