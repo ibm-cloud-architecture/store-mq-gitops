@@ -1,11 +1,11 @@
 # Store inventory demonstration with IBM MQ and Event Streams
 
-This is a gitops that let you install in a minimum set of commands a simple demonstration
+This is a gitops repository to let you install in a minimum set of commands a simple MQ to Kafka integration demonstration
 that is using the following components:
 
 ![](docs/es-mq-demo.png)
 
-* Store seller simulator
+* Store sale simulator
 * IBM MQ as part of IBM Cloud Pak for Integration
 * IBM Event Streams as part of IBM Cloud Pak for Integration
 * Kafka Connector as part of Event Streams
@@ -14,23 +14,29 @@ that is using the following components:
 
 There are two ways to use this demonstration:
 
-* You already have a Cloud Pak for Integration deployed on OpenShift 4.7 cluster
-* You have only an OpenShift 4.7+ cluster
-
+* You already have a Cloud Pak for Integration deployed on OpenShift 4.7 cluster.
+* You have only an OpenShift 4.7+ cluster.
 
 ## Audience
 
-* Understand Event Streams, Kafka Connectors, MQ connectors
+* Understand Event Streams, Kafka Connectors, MQ source connector
 
 ## Option 1: Using existing Cloud Pak for Integration
 
-You have an OpenShift Cluster with the needed resource and you already installed Cloud Pak
+You have an OpenShift Cluster with the needed resources and you already installed Cloud Pak
 for integration common services and operators.
 
-* login to OpenShift cluster
-* Verify Operators scope: all namespaces or within one namespace, like `cp4i`
-* Verify OpenShift GitOps 
+If you want to use the Event Streams and MQ broker consoles follow the instructions in [this EDA use case lab](/use-cases/connect-mq/#lab-1:-mq-source-to-event-streams-using-consoles).
 
+* Login to OpenShift cluster
+* Verify Event Streams and MQ operators scope: all namespaces or within one namespace.
+* Access to the MQ Broker user interface 
+* If operators are looking at all namespaces, create a demo project: 
+
+   ```sh
+   oc new-project mq-es-demo
+   ```
+   
 To Be Continued 
 
 
