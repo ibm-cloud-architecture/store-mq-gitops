@@ -1,6 +1,6 @@
 # Store inventory demonstration with IBM MQ and Event Streams
 
-This is a gitops repository to let you install in a minimum set of commands a simple MQ to Kafka integration demonstration
+This is a GitOps repository to let you install in a minimum set of commands a simple MQ to Kafka integration demonstration
 that is using the following components:
 
 ![](docs/es-mq-demo.png)
@@ -14,36 +14,17 @@ that is using the following components:
 
 There are two ways to use this demonstration:
 
+* You have only an [OpenShift 4.7+ cluster](/#).
 * You already have a Cloud Pak for Integration deployed on OpenShift 4.7 cluster.
-* You have only an OpenShift 4.7+ cluster.
 
 ## Audience
 
-* Understand Event Streams, Kafka Connectors, MQ source connector
+* Architect,  developer who want to understand Event Streams, Kafka Connectors, MQ source connector
 
-## Option 1: Using existing Cloud Pak for Integration
-
-You have an OpenShift Cluster with the needed resources and you already installed Cloud Pak
-for integration common services and operators.
-
-If you want to use the Event Streams and MQ broker consoles follow the instructions in [this EDA use case lab](/use-cases/connect-mq/#lab-1:-mq-source-to-event-streams-using-consoles).
-
-* Login to OpenShift cluster
-* Verify Event Streams and MQ operators scope: all namespaces or within one namespace.
-* Access to the MQ Broker user interface 
-* If operators are looking at all namespaces, create a demo project: 
-
-   ```sh
-   oc new-project mq-es-demo
-   ```
-   
-To Be Continued 
-
-
-## Option 2: From a new OpenShift Cluster
+## Option 1: From a new OpenShift Cluster
 
 In this option we start from a newly created OpenShift Cluster on IBM Cloud (ROKS cluster) with a minimum of three nodes of 8 CPU at 32GB,
-then will use some manual step to bootstrap the gitops and then start the ArgoCD deployment, which
+then will use some manual step to bootstrap the GitOps process and then start the ArgoCD deployment, which
 will deploy all the components automatically.
 
 * Add IBM product catalog, so IBM products are visible into the OperatorHub. 
@@ -67,6 +48,7 @@ it will take some time as it also installs 'Cloud Pak foundational services'
   ```sh
     oc apply -k bootstrap/eventstreams
   ```
+
   This should add one eventstreams operator pod in the `openshift-operators`, and 3 pods for common services in `ibm-common-services`.
 
 * Get your entitlement key from IBM site and use the following scripts to define a secret so
@@ -161,6 +143,18 @@ it will take some time as it also install 'Cloud Pak foundational services'
 ### ArgoCD outcome
 
 ![](./docs/argocd-smq-apps.png)
+
+## Option 2: Using existing Cloud Pak for Integration
+
+You have an OpenShift Cluster with the needed resources and you already installed Cloud Pak
+for Integration common services and operators, you should have Event Streams Operators and MQ Operators deployed
+to monitor all namespaces.
+
+If you want to use the OpenShift, Event Streams and MQ broker administrator consoles follow 
+the instructions in [this EDA MQ connector lab](/use-cases/connect-mq/#lab-1:-mq-source-to-event-streams-using-consoles).
+
+If you want to use a minimum set of commands do the following
+
 
 ## Demonstration script
 
