@@ -34,11 +34,17 @@ spec:
         num.replica.fetchers: 3
         offsets.topic.replication.factor: 3
       listeners:
+        plain:
+          port: 9092
+          type: internal
+          tls: false
         external:
+          port: 9091
           type: route
           authentication:
             type: scram-sha-512
         tls:
+          port: 9094
           authentication:
             type: tls
       metrics: {}
